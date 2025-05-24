@@ -12,7 +12,7 @@ Website : https://automationexercise.com
 
 
 ## There are test cases 
-- [Test1](#test1)
+- [Test1: Register User](#test1-register-user)
 - [Test2](#test2)
 - [Test3](#test3)
 - [Test4](#test4)
@@ -40,7 +40,7 @@ Website : https://automationexercise.com
 - [Test26](#test26)
 
 
-## Test1: Register User
+## Test1:  Register User
 1. Launch browser
 2. Navigate to url 'http://automationexercise.com'
 3. Verify that home page is visible successfully
