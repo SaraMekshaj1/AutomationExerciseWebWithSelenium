@@ -8,6 +8,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import static utilities.Utility.setUtilityDriver;
+
 public class BaseTest {
     private WebDriver driver;
     protected BasePage basePage;
@@ -26,6 +28,7 @@ public class BaseTest {
         basePage=new BasePage();
         basePage.setDriver(driver);
         homePage=new HomePage();
+        setUtilityDriver();
 
     }
 
