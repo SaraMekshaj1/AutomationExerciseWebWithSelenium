@@ -17,7 +17,11 @@ public class Signup_LoginPage extends BasePage {
     private By loginToYourAccountText=By.xpath("//h2[text()='Login to your account']");
     private By wrongCredentialsLoginMessage=By.xpath("//p[text()='Your email or password is incorrect!']");
 
+    private By emailAddressAlreadyExistMsg=By.xpath("//p[text()='Email Address already exist!']");
 
+    public boolean isEmailAddressAlreadyExistMsgVisible(){
+        return find(emailAddressAlreadyExistMsg).isDisplayed();
+    }
     public boolean isNewUserSingUpTextVisible() {
         return find(newUserSignUptxt).isDisplayed();
     }
