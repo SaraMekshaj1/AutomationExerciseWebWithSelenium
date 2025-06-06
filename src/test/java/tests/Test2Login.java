@@ -15,10 +15,13 @@ public class Test2Login extends BaseTest {
         Assert.assertEquals(actualText,"Logged in as Sara","Logged In as Sara is not shown in main page ");
 
         //here should be removed in order to have an account for other tests
+        /*
             var deletedAccount=homePage.clickDeleteButton();
        Assert.assertTrue(deletedAccount.isAcoountDeletedMSGvisible(),"Delete message is not visible");
 
        deletedAccount.clickContinueButton();
+
+         */
 
 
     }

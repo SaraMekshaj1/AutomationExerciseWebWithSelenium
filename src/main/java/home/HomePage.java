@@ -44,6 +44,11 @@ public DeleteAccountPage clickDeleteButton(){
         return new Signup_LoginPage();
     }
 
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+
 
 
 }

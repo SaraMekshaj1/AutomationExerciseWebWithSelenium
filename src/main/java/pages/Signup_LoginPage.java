@@ -14,10 +14,15 @@ public class Signup_LoginPage extends BasePage {
     private By emailLoginField = By.xpath("//input[@data-qa='login-email']");
     private By passwordLoginFiled = By.xpath("//input[@data-qa='login-password']");
     private By loginButton = By.xpath("//button[@data-qa='login-button']");
+    private By loginToYourAccountText=By.xpath("//h2[text()='Login to your account']");
+    private By wrongCredentialsLoginMessage=By.xpath("//p[text()='Your email or password is incorrect!']");
 
 
     public boolean isNewUserSingUpTextVisible() {
         return find(newUserSignUptxt).isDisplayed();
+    }
+    public boolean isLoginToYourAccountTextVisible(){
+        return find(loginToYourAccountText).isDisplayed();
     }
 
     public void setNameAtSingUp(String name) {
@@ -45,4 +50,10 @@ public class Signup_LoginPage extends BasePage {
         click(loginButton);
         return new HomePage();
     }
+
+    public String getWrongCredentialsLoginMessageText(){
+        return find(wrongCredentialsLoginMessage).getText();
+    }
+
+
 }
