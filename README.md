@@ -13,6 +13,7 @@
 5. Use **wait methods** (avoid `Thread.sleep`)  
 6. Capture **screenshots on failure**
 
+
 ---
 
 ## 📋 Test Case Index
