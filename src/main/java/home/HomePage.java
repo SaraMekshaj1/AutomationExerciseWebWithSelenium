@@ -2,10 +2,7 @@ package home;
 
 import base.BasePage;
 import org.openqa.selenium.By;
-import pages.ContactUsPage;
-import pages.DeleteAccountPage;
-import pages.ProductsPage;
-import pages.Signup_LoginPage;
+import pages.*;
 
 public class HomePage extends BasePage {
 
@@ -17,7 +14,13 @@ public class HomePage extends BasePage {
     private By productsNavBarButton=By.xpath("//a[@href='/products']");
     private By cartNavBarButton=By.xpath("//a[@href='/view_cart']");
     public By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
+    public By testCasesNavButton=By.cssSelector("a[href='/test_cases']");
 
+
+    public TestCases clickTestCasesNavButton(){
+        click(testCasesNavButton);
+        return new TestCases();
+    }
 
 
     public boolean isSliderVisible(){
