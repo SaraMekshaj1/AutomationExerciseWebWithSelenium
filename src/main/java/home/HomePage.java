@@ -2,6 +2,7 @@ package home;
 
 import base.BasePage;
 import org.openqa.selenium.By;
+import pages.ContactUsPage;
 import pages.DeleteAccountPage;
 import pages.ProductsPage;
 import pages.Signup_LoginPage;
@@ -15,6 +16,9 @@ public class HomePage extends BasePage {
     private By logoutButton=By.xpath("//a[@href='/logout']");
     private By productsNavBarButton=By.xpath("//a[@href='/products']");
     private By cartNavBarButton=By.xpath("//a[@href='/view_cart']");
+    public By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
+
+
 
     public boolean isSliderVisible(){
         return find(slider).isDisplayed();
@@ -46,6 +50,12 @@ public DeleteAccountPage clickDeleteButton(){
 
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public ContactUsPage clickContactUs(){
+        click(contactUsNavBarButton);
+        return new ContactUsPage();
+
     }
 
 
