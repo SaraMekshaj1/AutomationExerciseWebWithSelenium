@@ -141,10 +141,12 @@
 
 1. Open browser  
 2. Go to site  
-3. Click **Products**  
-4. Verify **ALL PRODUCTS** page  
-5. Click **View Product** of first item  
-6. Verify product detail: name, price, category, availability, etc.
+3. Click on 'Products' button
+4. Verify user is navigated to ALL PRODUCTS page successfully
+5. The products list is visible
+6. Click on 'View Product' of first product
+7. User is landed to product detail page
+8. Verify that detail detail is visible: product name, category, price, availability, condition, brand
 
 ---
 
