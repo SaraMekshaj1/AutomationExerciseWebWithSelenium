@@ -22,7 +22,6 @@ public class HomePage extends BasePage {
         return new TestCases();
     }
 
-
     public boolean isSliderVisible(){
         return find(slider).isDisplayed();
     }
@@ -31,7 +30,7 @@ public class HomePage extends BasePage {
         return new Signup_LoginPage();
     }
 
-    public ProductsPage goToProductsPage(){
+    public ProductsPage clickProductsPage(){
         click(productsNavBarButton);;
         return new ProductsPage();
     }
