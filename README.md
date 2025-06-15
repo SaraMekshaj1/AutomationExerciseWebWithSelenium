@@ -401,7 +401,7 @@
 
 ## Known Issues / Test Observations
 
-- 🔍 **Search Keyword Sensitivity**  
+- Search Keyword Sensitivity
   Searching for `"Tshirt"` returns 6 results, while `"T-shirt"` returns only 3.  
   All `"T-shirt"` results are included in the `"Tshirt"` results.  
   This shows that the search engine is **sensitive to special characters** like hyphens.
