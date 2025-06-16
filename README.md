@@ -47,6 +47,11 @@
 
 ---
 
+##  Known Issues / Test Observations
+- [Search Keyword Sensitivity](#test-9-search-t-shirt-diffResults)
+
+----
+
 ## Test1: Register User
 
 1. Launch browser  
@@ -392,4 +397,15 @@
 5. Verify 'SUBSCRIPTION' is visible
 6. Scroll up page to top
 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+
+
+## Known Issues / Test Observations
+
+- Search Keyword Sensitivity
+  Searching for `"Tshirt"` returns 6 results, while `"T-shirt"` returns only 3.  
+  All `"T-shirt"` results are included in the `"Tshirt"` results.  
+  This shows that the search engine is **sensitive to special characters** like hyphens.
+
+  ✅ Suggestion: Normalize search input or improve fuzzy matching to include results for common variations like `T shirt`, `T-shirt`, and `Tshirt`.
+
 
