@@ -4,6 +4,8 @@ import base.BasePage;
 import org.openqa.selenium.By;
 import pages.*;
 
+import static utilities.JavaScriptUtility.scrollToElementJS;
+
 public class HomePage extends BasePage {
 
     private By slider= By.xpath("//section[@id='slider']");
@@ -15,7 +17,9 @@ public class HomePage extends BasePage {
     private By cartNavBarButton=By.xpath("//a[@href='/view_cart']");
     public By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
     public By testCasesNavButton=By.cssSelector("a[href='/test_cases']");
-
+    public By subscriptionFieldFooter=By.cssSelector("input[id='susbscribe_email']");
+    public By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
+    public By succesfullSubscribtionMessage=By.id("success-subscribe");
 
     public TestCases clickTestCasesNavButton(){
         click(testCasesNavButton);
@@ -58,6 +62,16 @@ public DeleteAccountPage clickDeleteButton(){
         click(contactUsNavBarButton);
         return new ContactUsPage();
 
+    }
+
+    public void setEmailAtSubscriptionSection(String email){
+        scrollToElementJS(subscribeButtonFooter);
+        set(subscriptionFieldFooter,email);
+        click(subscribeButtonFooter);
+
+    }
+    public String  messageDisplayed(){
+        return find(succesfullSubscribtionMessage).getText();
     }
 
 
