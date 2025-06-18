@@ -199,7 +199,7 @@
 7. Hover over second product and click 'Add to cart'
 8. Click 'View Cart' button
 9. Verify both products are added to Cart
-10. Verify their prices, quantity and total price
+
 
 
 ## Test13:  Verify Product quantity in Cart
