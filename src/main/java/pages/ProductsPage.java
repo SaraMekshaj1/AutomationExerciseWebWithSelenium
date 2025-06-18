@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static utilities.ActionsUtility.hoverOverElement;
+import static utilities.JavaScriptUtility.scrollToElementJS;
+
 public class ProductsPage extends BasePage {
 
     private By allProductsH2= By.cssSelector("h2.title.text-center");
@@ -16,9 +19,11 @@ public class ProductsPage extends BasePage {
     private By result1Sleveless=By.xpath("//div[@class='single-products'][.//p[text()='Sleeveless Dress']]");
     private By result2Sleeveless=By.xpath("//div[@class='single-products'][.//p[text()='Sleeveless Unicorn Patch Gown - Pink']]");
     private By result3Sleeveless=By.xpath("//div[@class='single-products'][.//p[text()='Sleeveless Unicorn Print Fit & Flare Net Dress - Multi']]");
-
-
-
+    private By blueTopProduct=By.xpath("//div[@class='productinfo text-center']/p[text()='Blue Top']");
+    private By continueShoppingPopupButton=By.xpath("//button[@class='btn btn-success close-modal btn-block']");
+    private By addToCartBlueTop=By.xpath("//div[@class='productinfo text-center'][.//h2[text()='Rs. 500'] and .//p[contains(text(),'Blue Top')]]//a[@data-product-id='1' and contains(@class, 'add-to-cart')]");
+    private By menTshirtProduct=By.xpath("//div[@class='productinfo text-center']//p[text()='Men Tshirt']");
+    private By addToCartMentTshirt=By.xpath("//div[@class='productinfo text-center'][.//h2[text()='Rs. 400'] and .//p[contains(text(),'Men Tshirt')]]//a[@data-product-id='2' and contains(@class, 'add-to-cart')]");
 
     public boolean isAllProductH2textDisplayed(){
         return find(allProductsH2).isDisplayed();
@@ -56,9 +61,26 @@ public class ProductsPage extends BasePage {
         return true;
     }
 
+    public void hoverOverBlueTopProduct(){
+        hoverOverElement(find(blueTopProduct));
+    }
 
+    public void clickAddToCardBlueTop(){
+        scrollToElementJS(addToCartBlueTop);
+        click(addToCartBlueTop);
+    }
+    public void clickContinueButton(){
+        waitUntilVisible(continueShoppingPopupButton,3);
+        click(continueShoppingPopupButton);
+    }
 
-
+    public void hoverOverMenTshirtProduct() {
+        hoverOverElement(find((menTshirtProduct)));
+    }
+    public void clickAddToCardMenTshirt(){
+        scrollToElementJS(addToCartMentTshirt);
+        click(addToCartMentTshirt);
+    }
 
 
 }

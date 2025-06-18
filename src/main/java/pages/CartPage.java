@@ -5,11 +5,17 @@ import org.openqa.selenium.By;
 
 import static utilities.JavaScriptUtility.scrollToElementJS;
 
-public class CardPage extends BasePage {
+public class CartPage extends BasePage {
     private By substripionH2TEXT= By.xpath("//h2[text()='Subscription']");
     private By subscriptionEmailField=By.cssSelector("input[id='susbscribe_email']");
     private By succesfullSubscribtionMessage=By.id("success-subscribe");
-    public By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
+    private By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
+
+    private By blueTopProduct=By.xpath("//td[@class='cart_description']/h4/a[contains(text(), 'Blue Top')]");
+    private By menTshirt=By.xpath("//td[@class='cart_description']/h4/a[contains(text(), 'Men Tshirt')]");
+
+
+
     public  boolean isSubscriptionDisplayed(){
         scrollToElementJS(substripionH2TEXT);
         return find(substripionH2TEXT).isDisplayed();
@@ -21,5 +27,13 @@ public class CardPage extends BasePage {
     }
     public String  messageDisplayed(){
         return find(succesfullSubscribtionMessage).getText();
+    }
+
+    public boolean isBlueTopProductVisible(){
+        return find(blueTopProduct).isDisplayed();
+    }
+
+    public  boolean isMenTshirtProductVisible(){
+        return  find(menTshirt).isDisplayed();
     }
 }

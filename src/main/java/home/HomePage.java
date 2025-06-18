@@ -26,9 +26,9 @@ public class HomePage extends BasePage {
         return new TestCases();
     }
 
-    public CardPage clickCartNavBarButton(){
+    public CartPage clickCartNavBarButton(){
         click(cartNavBarButton);
-        return new CardPage();
+        return new CartPage();
     }
 
     public boolean isSliderVisible(){
