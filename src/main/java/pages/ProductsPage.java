@@ -24,6 +24,21 @@ public class ProductsPage extends BasePage {
     private By addToCartBlueTop=By.xpath("//div[@class='productinfo text-center'][.//h2[text()='Rs. 500'] and .//p[contains(text(),'Blue Top')]]//a[@data-product-id='1' and contains(@class, 'add-to-cart')]");
     private By menTshirtProduct=By.xpath("//div[@class='productinfo text-center']//p[text()='Men Tshirt']");
     private By addToCartMentTshirt=By.xpath("//div[@class='productinfo text-center'][.//h2[text()='Rs. 400'] and .//p[contains(text(),'Men Tshirt')]]//a[@data-product-id='2' and contains(@class, 'add-to-cart')]");
+    private By productDetails=By.cssSelector("div[class='product-details']");
+    private By quantityProductDetails=By.cssSelector("input[id='quantity']");
+    private By addToCardButtonProductDetails=By.cssSelector("button[class='btn btn-default cart']");
+
+    public void addToCard(){
+        click(addToCardButtonProductDetails);
+    }
+
+    public void setQuantityProductDetails(String quantity){
+        set(quantityProductDetails,quantity);
+    }
+
+    public boolean isProductDetailsVisible(){
+        return find(productDetails).isDisplayed();
+    }
 
     public boolean isAllProductH2textDisplayed(){
         return find(allProductsH2).isDisplayed();
@@ -81,6 +96,8 @@ public class ProductsPage extends BasePage {
         scrollToElementJS(addToCartMentTshirt);
         click(addToCartMentTshirt);
     }
+
+
 
 
 }

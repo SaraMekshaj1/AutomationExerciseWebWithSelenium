@@ -15,11 +15,12 @@ public class HomePage extends BasePage {
     private By logoutButton=By.xpath("//a[@href='/logout']");
     private By productsNavBarButton=By.xpath("//a[@href='/products']");
     private By cartNavBarButton=By.xpath("//a[@href='/view_cart']");
-    public By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
-    public By testCasesNavButton=By.cssSelector("a[href='/test_cases']");
-    public By subscriptionFieldFooter=By.cssSelector("input[id='susbscribe_email']");
-    public By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
-    public By succesfullSubscribtionMessage=By.id("success-subscribe");
+    private  By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
+    private  By testCasesNavButton=By.cssSelector("a[href='/test_cases']");
+    private  By subscriptionFieldFooter=By.cssSelector("input[id='susbscribe_email']");
+    private  By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
+    private  By succesfullSubscribtionMessage=By.id("success-subscribe");
+    private By viewBlueTopButton=By.cssSelector("a[href='/product_details/1']");
 
     public TestCases clickTestCasesNavButton(){
         click(testCasesNavButton);
@@ -77,6 +78,12 @@ public DeleteAccountPage clickDeleteButton(){
     }
     public String  messageDisplayed(){
         return find(succesfullSubscribtionMessage).getText();
+    }
+
+    public  ProductsPage clickViewBlueTopProduct(){
+        scrollToElementJS(viewBlueTopButton);
+        click(viewBlueTopButton);
+        return new ProductsPage();
     }
 
 
