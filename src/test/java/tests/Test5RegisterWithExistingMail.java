@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 
 public class Test5RegisterWithExistingMail extends BaseTest {
     @Test
-    public void test4(){
+    public void test5(){
        var signUpPage= homePage.clickSignLoginPage();
-        signUpPage.setNameAtSingUp("Vera");
-        signUpPage.setEmailAtSingUp("s25akfj@gmail.com");
+        signUpPage.setNameAtSignUp("Vera");
+        signUpPage.setEmailAtSignUp("s25akfj@gmail.com");
         signUpPage.clickSignUpButton();
 
         Assert.assertTrue(signUpPage.isEmailAddressAlreadyExistMsgVisible());

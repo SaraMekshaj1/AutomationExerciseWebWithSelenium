@@ -5,18 +5,24 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static utilities.DropDownUtility.*;
+import static utilities.DropDownUtility.getFirstSelectedOption;
 
-@Test
-public class Test1RegisterUser extends BaseTest {
+public class Test14PlaceOrder extends BaseTest {
 
-    public void  test1(){
-      boolean isHomePageVisible = homePage.isSliderVisible();
-      Assert.assertTrue(isHomePageVisible);
-      var signupLoginPage=homePage.clickSignLoginPage();
-      Assert.assertTrue(isHomePageVisible," New User Signup is not available");
-      signupLoginPage.setNameAtSignUp("Sara");
-      signupLoginPage.setEmailAtSignUp("s25akfj@gmail.com");
+    @Test
+    public void test14() {
+        boolean isHomePageVisible = homePage.isSliderVisible();
+        Assert.assertTrue(isHomePageVisible, "Home Page is not visible");
+        homePage.addToCartSleevelessDress();
+        homePage.clickContinueButton();
+        homePage.addToCartFancyGreenTop();
+       var cartPage= homePage.clickCartNavBarButton();
+       Assert.assertTrue(cartPage.isProceedToCheckOutVisible(),"ProceedToCheckOut button is not visible , so you are not in the cart page");
+       cartPage.clickProceedToCheckoutButton();
+
+       var  signupLoginPage=cartPage.clickRegisterLoginAtCheckoutButton();
+        signupLoginPage.setNameAtSignUp("Zoi");
+        signupLoginPage.setEmailAtSignUp("zoiMalaj@gmail.com");
         var accountInformationPage=signupLoginPage.clickSignUpButton();
         Assert.assertTrue(accountInformationPage.isEnterAccountInformationVisible(),"ENTER ACCOUNT INFORMATION is not available");
 
@@ -24,20 +30,19 @@ public class Test1RegisterUser extends BaseTest {
         boolean isMscRadioButtonSelected = accountInformationPage.isMrsRadioButtonSelected();
         Assert.assertTrue(isMscRadioButtonSelected, "Msc radio button should be selected");
 
-        accountInformationPage.setName("Sara");
+        accountInformationPage.setName("Zoi");
         accountInformationPage.setPassword("1234567");
 
-      accountInformationPage.selectDayDropDown("14");
-      Assert.assertEquals(accountInformationPage.getSelectedDay(), "14");
+        accountInformationPage.selectDayDropDown("14");
+        Assert.assertEquals(accountInformationPage.getSelectedDay(), "14");
 
-      accountInformationPage.selectYearDropDown("2001");
-      Assert.assertEquals(accountInformationPage.getSelectedYear(), "2001");
+        accountInformationPage.selectYearDropDown("2001");
+        Assert.assertEquals(accountInformationPage.getSelectedYear(), "2001");
 
-      accountInformationPage.selectMonthDropDown(3);
-      Assert.assertEquals(accountInformationPage.getSelectedMonth(), "March");
+        accountInformationPage.selectMonthDropDown(3);
+        Assert.assertEquals(accountInformationPage.getSelectedMonth(), "March");
 
-
-      accountInformationPage.clickNewsletterCheckBox();
+        accountInformationPage.clickNewsletterCheckBox();
         boolean isNewsLetterSelected= accountInformationPage.isNewsLetterCheckBoxSelected();
         Assert.assertTrue(isNewsLetterSelected);
 
@@ -45,7 +50,7 @@ public class Test1RegisterUser extends BaseTest {
         boolean isSpecialOffersChBoxSelected=accountInformationPage.isReceiveSpecialOffersCheckboxSelected();
         Assert.assertTrue(isSpecialOffersChBoxSelected);
 
-        accountInformationPage.setFirstName("Sara");
+        accountInformationPage.setFirstName("Zoi");
         accountInformationPage.setLastName("Malaj");
         accountInformationPage.setCompanyName("Solution One");
         accountInformationPage.setAddress1("S John St");
@@ -56,24 +61,30 @@ public class Test1RegisterUser extends BaseTest {
         accountInformationPage.setZipCode("46044");
         accountInformationPage.setMobileNr("(765) 555-4324");
 
-      var accountCreatedPage=  accountInformationPage.clickCreateAccountButton();
+        var accountCreatedPage=  accountInformationPage.clickCreateAccountButton();
         String accountCreatedMessage=accountCreatedPage.getPageText();
         Assert.assertEquals(accountCreatedMessage,"ACCOUNT CREATED!", "Unfortunately your account is not created successfully ");
 
         accountCreatedPage.clickContinueButton();
 
-       String actualText=homePage.getLoginInAsText();
-       Assert.assertEquals(actualText,"Logged in as Sara","Logged In as Sara is not shown in main page ");
+        String actualText=homePage.getLoginInAsText();
+        Assert.assertEquals(actualText,"Logged in as Zoi","Logged In as Zoi is not shown in main page ");
+
+        cartPage= homePage.clickCartNavBarButton();
+        cartPage.clickProceedToCheckoutButton();
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     }
-
-
-
-
-    }
-
-
-
+}

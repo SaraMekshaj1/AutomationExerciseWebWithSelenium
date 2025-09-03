@@ -3,13 +3,23 @@ package pages;
 import base.BasePage;
 import home.HomePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class TestCases extends BasePage {
+public class TestCases  extends BasePage {
+    public TestCases(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver,this);
+    }
 
-    private By testCasesTitlePage= By.xpath("//div[@class='col-sm-9 col-sm-offset-1']//b[text()='Test Cases']");
+
+    @FindBy(xpath = "//div[@class='col-sm-9 col-sm-offset-1']//b[text()='Test Cases']")
+    WebElement testCasesTitlePage;
 
     public boolean isTestCasesTitleVisible(){
-        return find(testCasesTitlePage).isDisplayed();
+        return testCasesTitlePage.isDisplayed();
     }
 
 

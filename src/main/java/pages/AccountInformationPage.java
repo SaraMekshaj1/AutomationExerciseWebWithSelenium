@@ -1,141 +1,221 @@
 package pages;
 
 import base.BasePage;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import pages.AccountCreatedPage;
 
 import static utilities.DropDownUtility.selectByIndex;
 import static utilities.DropDownUtility.selectByVisibleText;
 import static utilities.JavaScriptUtility.scrollToElementJS;
 
 public class AccountInformationPage extends BasePage {
-    private By enterAccountInformation= By.xpath("//div[@class='login-form']//b[text()='Enter Account Information']");
-    private  By titleMsrRadioButton=By.id("id_gender2");
-    private By nameField=By.id("name");
-    private By passwordField=By.id("password");
-    private By dayDropDown=By.id("days");
-    private By monthDropDown=By.id("months");
-    private By yearDropDown=By.id("years");
-    private By newsletterCheckBox=By.id("newsletter");
-    private By receiveSpecialOffersCheckbox=By.id("optin");
-    private By first_nameField=By.id("first_name");
-    private By last_nameField=By.id("last_name");
-    private By companyFiled=By.id("company");
-    private By address1Field=By.id("address1");
-    private By address2Field=By.id("address2");
-    private By countryDropDown=By.id("country");
-    private By stateField=By.id("state");
-    private By cityField=By.id("city");
-    private By zipCodeField=By.id("zipcode");
-    private By mobileNumberField=By.id("mobile_number");
-    private By createAccountButton=By.xpath("//button[text()='Create Account']");
 
 
 
-    public boolean isEnterAccountInformationVisible(){
-        return find(enterAccountInformation).isDisplayed();
+    public AccountInformationPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
-    public void clickTitleMsrRadioButton(){
+
+    @FindBy(xpath = "//div[@class='login-form']//b[text()='Enter Account Information']")
+    private WebElement enterAccountInformation;
+
+    @FindBy(id = "id_gender2")
+    private WebElement titleMsrRadioButton;
+
+    @FindBy(id = "name")
+    private WebElement nameField;
+
+    @FindBy(id = "password")
+    private WebElement passwordField;
+
+    @FindBy(id = "days")
+    private WebElement dayDropDown;
+
+    @FindBy(id = "months")
+    private WebElement monthDropDown;
+
+    @FindBy(id = "years")
+    private WebElement yearDropDown;
+
+    @FindBy(id = "newsletter")
+    private WebElement newsletterCheckBox;
+
+    @FindBy(id = "optin")
+    private WebElement receiveSpecialOffersCheckbox;
+
+    @FindBy(id = "first_name")
+    private WebElement firstNameField;
+
+    @FindBy(id = "last_name")
+    private WebElement lastNameField;
+
+    @FindBy(id = "company")
+    private WebElement companyField;
+
+    @FindBy(id = "address1")
+    private WebElement address1Field;
+
+    @FindBy(id = "address2")
+    private WebElement address2Field;
+
+    @FindBy(id = "country")
+    private WebElement countryDropDown;
+
+    @FindBy(id = "state")
+    private WebElement stateField;
+
+    @FindBy(id = "city")
+    private WebElement cityField;
+
+    @FindBy(id = "zipcode")
+    private WebElement zipCodeField;
+
+    @FindBy(id = "mobile_number")
+    private WebElement mobileNumberField;
+
+    @FindBy(xpath = "//button[text()='Create Account']")
+    private WebElement createAccountButton;
+
+
+    public boolean isEnterAccountInformationVisible() {
+        return enterAccountInformation.isDisplayed();
+    }
+
+    public void clickTitleMsrRadioButton() {
         click(titleMsrRadioButton);
     }
-    public boolean isMrsRadioButtonSelected(){
-        return find(titleMsrRadioButton).isSelected();
-    }
-    public void setName(String name){
-        set(nameField,name);
-    }
-    public void setPassword(String password){
-        set(passwordField,password);
-    }
-    public void selectDayDropDown(String text){
-        scrollToElementJS(dayDropDown);
-        selectByVisibleText(dayDropDown,text);
-    }
-    public void selectDayDropDown(int index){
-        scrollToElementJS(dayDropDown);
-        selectByIndex(dayDropDown,index);
+
+    public boolean isMrsRadioButtonSelected() {
+        return titleMsrRadioButton.isSelected();
     }
 
-    public void selectMonthDropDown(String text){
-        scrollToElementJS(monthDropDown);
-        selectByVisibleText(monthDropDown,text);
+    public void setName(String name) {
+        set(nameField, name);
     }
 
-    public void selectMonthDropDown(int index){
-        scrollToElementJS(monthDropDown);
-        selectByIndex(monthDropDown,index);
+    public void setPassword(String password) {
+        set(passwordField, password);
     }
 
-    public void selectYearDropDown(String text){
-        scrollToElementJS(yearDropDown);
-        selectByVisibleText(yearDropDown,text);
-    }
-    public void selectYearDropDown(int index){
-        scrollToElementJS(yearDropDown);
-        selectByIndex(yearDropDown,index);
+    public void selectDayDropDown(String text) {
+        scrollToElementJS(driver,dayDropDown);
+        selectByVisibleText(dayDropDown, text);
     }
 
+    public void selectDayDropDown(int index) {
+        scrollToElementJS(driver,dayDropDown);
+        selectByIndex(dayDropDown, index);
+    }
 
-    public void clickNewsletterCheckBox(){
-        if(!find(newsletterCheckBox).isSelected()){
+    public void selectMonthDropDown(String text) {
+        scrollToElementJS(driver,monthDropDown);
+        selectByVisibleText(monthDropDown, text);
+    }
+
+    public void selectMonthDropDown(int index) {
+        scrollToElementJS(driver,monthDropDown);
+        selectByIndex(monthDropDown, index);
+    }
+
+    public void selectYearDropDown(String text) {
+        scrollToElementJS(driver,yearDropDown);
+        selectByVisibleText(yearDropDown, text);
+    }
+
+    public void selectYearDropDown(int index) {
+        scrollToElementJS(driver,yearDropDown);
+        selectByIndex(yearDropDown, index);
+    }
+
+    public void clickNewsletterCheckBox() {
+        if (!newsletterCheckBox.isSelected()) {
             click(newsletterCheckBox);
         }
     }
-    public boolean isNewsLetterCheckBoxSelected(){
-        return find(newsletterCheckBox).isSelected();
+
+    public boolean isNewsLetterCheckBoxSelected() {
+        return newsletterCheckBox.isSelected();
     }
-    public void clickreceiveSpecialOffersCheckbox(){
-        if(!find(receiveSpecialOffersCheckbox).isSelected()){
+
+    public void clickReceiveSpecialOffersCheckbox() {
+        if (!receiveSpecialOffersCheckbox.isSelected()) {
             click(receiveSpecialOffersCheckbox);
         }
     }
-    public boolean isReceiveSpecialOffersCheckboxSelected(){
-        return find(receiveSpecialOffersCheckbox).isSelected();
+
+    public boolean isReceiveSpecialOffersCheckboxSelected() {
+        return receiveSpecialOffersCheckbox.isSelected();
     }
-    public void setFirstName(String name){
-        set(first_nameField,name);
+
+    public void setFirstName(String name) {
+        set(firstNameField, name);
     }
-    public void setLast_name(String lastName){
-        set(last_nameField,lastName);
+
+    public void setLastName(String lastName) {
+        set(lastNameField, lastName);
     }
-    public void setCompanyName(String companyName){
-        set(companyFiled, companyName);
+
+    public void setCompanyName(String companyName) {
+        set(companyField, companyName);
     }
-    public void setAddress1(String address1){
-        set(address1Field,address1);
+
+    public void setAddress1(String address1) {
+        set(address1Field, address1);
     }
-    public void setAddress2Field(String address2){
-        set(address2Field,address2);
+
+    public void setAddress2Field(String address2) {
+        set(address2Field, address2);
     }
-    public void selectCountryDropDown(String text){
-        scrollToElementJS(countryDropDown);
-        selectByVisibleText(countryDropDown,text);
+
+    public void selectCountryDropDown(String text) {
+        scrollToElementJS(driver,countryDropDown);
+        selectByVisibleText(countryDropDown, text);
     }
-    public void selectCountryDropDown(int index){
-        scrollToElementJS(countryDropDown);
-        selectByIndex(countryDropDown,index);
+
+    public void selectCountryDropDown(int index) {
+        scrollToElementJS(driver,countryDropDown);
+        selectByIndex(countryDropDown, index);
     }
-    public void setState(String stateName){
+
+    public void setState(String stateName) {
         set(stateField, stateName);
     }
-    public void setCity(String city){
-        set(cityField,city);
+
+    public void setCity(String city) {
+        set(cityField, city);
     }
-    public void setZipCode(String zipCode){
-        set(zipCodeField,zipCode);
+
+    public void setZipCode(String zipCode) {
+        set(zipCodeField, zipCode);
     }
-    public void setMobileNr(String mobileNr){
-        set(mobileNumberField,mobileNr);
+
+    public void setMobileNr(String mobileNr) {
+        set(mobileNumberField, mobileNr);
     }
-    public AccountCreatedPage clickCreateAccountButton(){
-        scrollToElementJS(createAccountButton);
+
+    public AccountCreatedPage clickCreateAccountButton() {
+        scrollToElementJS(driver,createAccountButton);
         click(createAccountButton);
-        return new AccountCreatedPage();
+        return new AccountCreatedPage(driver);
     }
 
 
 
+    public String getSelectedDay() {
+        return new Select(dayDropDown).getFirstSelectedOption().getText();
+    }
 
+    public String getSelectedMonth() {
+        return new Select(monthDropDown).getFirstSelectedOption().getText();
+    }
 
-
+    public String getSelectedYear() {
+        return new Select(yearDropDown).getFirstSelectedOption().getText();
+    }
 
 }

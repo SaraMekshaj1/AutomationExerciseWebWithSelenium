@@ -1,40 +1,66 @@
 package pages;
 
 import base.BasePage;
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class ContactUsPage extends BasePage
-{
-    private By nameField =By.cssSelector("[data-qa='name']");
-    private By emailField=By.cssSelector("[data-qa='email']");
-    private By subjectField=By.cssSelector("[data-qa='subject']");
-    private By messageField=By.cssSelector("[data-qa='message']");
-    private By fileUpload=By.name("upload_file");
-    private By submitButton=By.cssSelector("[data-qa=submit-button]");
-    private By successfulSubmitMessage=By.cssSelector(".status.alert.alert-success");
+public class ContactUsPage extends BasePage {
 
-    public void setName(String name){
-     set(nameField,name);
+
+    public ContactUsPage(WebDriver driver) {
+       super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void setEmail(String email){
-        set(emailField,email);
-    }
-    public void setSubject(String subject){
-        set(subjectField,subject);
-    }
-    public void setMessage(String message){
-        set(messageField,message);
+    @FindBy(css = "[data-qa='name']")
+    private WebElement nameField;
+
+    @FindBy(css = "[data-qa='email']")
+    private WebElement emailField;
+
+    @FindBy(css = "[data-qa='subject']")
+    private WebElement subjectField;
+
+    @FindBy(css = "[data-qa='message']")
+    private WebElement messageField;
+
+    @FindBy(name = "upload_file")
+    private WebElement fileUpload;
+
+    @FindBy(css = "[data-qa=submit-button]")
+    private WebElement submitButton;
+
+    @FindBy(css = ".status.alert.alert-success")
+    private WebElement successfulSubmitMessage;
+
+
+    public void setName(String name) {
+        set(nameField, name);
     }
 
-    public void uploadFile(String fileLocation){
-        set(fileUpload,fileLocation);
+    public void setEmail(String email) {
+        set(emailField, email);
     }
 
-    public void clickSubmit(){
+    public void setSubject(String subject) {
+        set(subjectField, subject);
+    }
+
+    public void setMessage(String message) {
+        set(messageField, message);
+    }
+
+    public void uploadFile(String fileLocation) {
+        set(fileUpload, fileLocation);
+    }
+
+    public void clickSubmit() {
         click(submitButton);
     }
-    public boolean isSuccessfulMessageSubmited(){
-        return find(successfulSubmitMessage).isDisplayed();
+
+    public boolean isSuccessfulMessageSubmitted() {
+        return successfulSubmitMessage.isDisplayed();
     }
 }

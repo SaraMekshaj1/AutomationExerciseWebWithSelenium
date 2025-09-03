@@ -9,28 +9,37 @@ import org.openqa.selenium.support.ui.Select;
 
 public class DropDownUtility extends Utility {
 
-    private static Select findDropDown(By locator){
-        return new Select(driver.findElement(locator));
+    private static Select findDropDown(WebElement element ){
+        return new Select(element);
+    }
+    public static  String getFirstSelectedOption(WebElement dropdownElement) {
+        Select select = new Select(dropdownElement);
+        return select.getFirstSelectedOption().getText();
     }
 
-    public static String getFirstSelectedOption(By locator) {
-        return findDropDown(locator).getFirstSelectedOption().getText();
+    public static void selectByVisibleText(WebElement element,String text){
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
+    }
+    public static void selectByIndex(WebElement element,int index){
+        Select select=new Select(element);
+       select.selectByIndex(index);
+    }
+    public void selectByValue(WebElement dropdown, String value) {
+        Select select = new Select(dropdown);
+        select.selectByValue(value);
     }
 
-    public static void selectByVisibleText(By locator,String text){
-        findDropDown(locator).selectByVisibleText(text);
+    public static void deselectByValue(WebElement element, String value){
+        Select select = new Select(element);
+        select.selectByValue(value);
     }
-    public static void selectByIndex(By locator,int index){
-        findDropDown(locator).selectByIndex(index);
-    }
-    public static void selectByValue(By locator,String value){
-        findDropDown(locator).selectByValue(value);
-    }
-    public static void deselectByValue(By locator, String value){
-        findDropDown(locator).deselectByValue(value);
-    }
-    public static List<String > getAllSelectedOptions(By locator){List<WebElement> allSeletedOptions=  findDropDown(locator).getAllSelectedOptions();
-        return allSeletedOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+
+    public List<String> getAllSelectedOptions(WebElement dropdown) {
+        List<WebElement> allSelectedOptions = new Select(dropdown).getAllSelectedOptions();
+        return allSelectedOptions.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 
 }

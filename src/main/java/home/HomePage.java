@@ -2,62 +2,119 @@ package home;
 
 import base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import pages.*;
 
 import static utilities.JavaScriptUtility.scrollToElementJS;
 
 public class HomePage extends BasePage {
 
-    private By slider= By.xpath("//section[@id='slider']");
-    private By loginSigninHomeButton = By.xpath("//a[@href='/login']");
-    private By logedAsNAME=By.xpath("//a[contains(., 'Logged in as') and .//b[text()='Sara']]");
-    private By deleteAccountButton=By.xpath("//a[@href='/delete_account']");
-    private By logoutButton=By.xpath("//a[@href='/logout']");
-    private By productsNavBarButton=By.xpath("//a[@href='/products']");
-    private By cartNavBarButton=By.xpath("//a[@href='/view_cart']");
-    private  By contactUsNavBarButton=By.xpath("//a[@href='/contact_us']");
-    private  By testCasesNavButton=By.cssSelector("a[href='/test_cases']");
-    private  By subscriptionFieldFooter=By.cssSelector("input[id='susbscribe_email']");
-    private  By subscribeButtonFooter=By.cssSelector("button[id='subscribe']");
-    private  By succesfullSubscribtionMessage=By.id("success-subscribe");
-    private By viewBlueTopButton=By.cssSelector("a[href='/product_details/1']");
+    public HomePage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+    @FindBy(xpath = "//section[@id='slider']")
+    WebElement slider;
 
+    @FindBy(xpath="//a[@href='/login']")
+   WebElement loginSigninHomeButton ;
+
+    @FindBy(xpath="//a[contains(., 'Logged in as') and .//b]")
+    WebElement logedAsNAME;
+
+    @FindBy(xpath="//a[@href='/delete_account']")
+    WebElement deleteAccountButton;
+
+    @FindBy(xpath="//a[@href='/logout']")
+    WebElement logoutButton;
+
+    @FindBy(xpath="//a[@href='/products']")
+    WebElement productsNavBarButton;
+
+    @FindBy(xpath="//a[@href='/view_cart']")
+    WebElement cartNavBarButton;
+
+    @FindBy(xpath="//a[@href='/contact_us']")
+    WebElement contactUsNavBarButton;
+
+    @FindBy(css="a[href='/test_cases']")
+    WebElement testCasesNavButton;
+
+    @FindBy(css="input[id='susbscribe_email']")
+    WebElement subscriptionFieldFooter;
+
+    @FindBy(id="subscribe")
+    WebElement subscribeButtonFooter;
+
+    @FindBy(id="success-subscribe")
+    WebElement succesfullSubscribtionMessage;
+
+    @FindBy(css="a[href='/product_details/1']")
+    WebElement viewBlueTopButton;
+
+    @FindBy(xpath="//button[@class='btn btn-success close-modal btn-block']")
+    WebElement continueShoppingPopupButton;
+
+    @FindBy(xpath="//div[@class='productinfo text-center'][.//h2[text()='Rs. 1000'] and .//p[contains(text(),'Sleeveless')]]//a[@data-product-id='3' and contains(@class, 'add-to-cart')]")
+    WebElement addToCartSleevelessDressButton;
+
+    @FindBy(xpath="//div[@class='productinfo text-center'][.//h2[text()='Rs. 700'] and .//p[contains(text(),'Fancy Green Top')]]//a[@data-product-id='8' and contains(@class, 'add-to-cart')]")
+    WebElement addToCartFancyGreenTopButton;
+
+    public void addToCartFancyGreenTop(){
+        scrollToElementJS(driver,addToCartFancyGreenTopButton);
+        click(addToCartFancyGreenTopButton);
+        clickContinueButton();
+    }
+    public void clickContinueButton(){
+        waitUntilVisible( continueShoppingPopupButton,3);
+        click(continueShoppingPopupButton);
+    }
+
+    public void addToCartSleevelessDress(){
+        scrollToElementJS(driver,addToCartSleevelessDressButton);
+       click(addToCartSleevelessDressButton);
+
+    }
     public TestCases clickTestCasesNavButton(){
         click(testCasesNavButton);
-        return new TestCases();
+        return new TestCases(driver);
     }
 
     public CartPage clickCartNavBarButton(){
         click(cartNavBarButton);
-        return new CartPage();
+        return new CartPage(driver);
     }
 
     public boolean isSliderVisible(){
-        return find(slider).isDisplayed();
+        return slider.isDisplayed();
     }
     public Signup_LoginPage clickSignLoginPage() {
         click(loginSigninHomeButton);
-        return new Signup_LoginPage();
+        return new Signup_LoginPage(driver);
     }
 
     public ProductsPage clickProductsPage(){
         click(productsNavBarButton);;
-        return new ProductsPage();
+        return new ProductsPage(driver);
     }
 
 public DeleteAccountPage clickDeleteButton(){
         click(deleteAccountButton);
-        return new DeleteAccountPage();
+        return new DeleteAccountPage(driver);
 }
     public String getLoginInAsText(){
-        return find(logedAsNAME).getText();
+        return logedAsNAME.getText();
     }
     public boolean isDeleteButtonVisible(){
-        return find(deleteAccountButton).isDisplayed();
+        return deleteAccountButton.isDisplayed();
     }
     public Signup_LoginPage clickLogOut(){
         click(logoutButton);
-        return new Signup_LoginPage();
+        return new Signup_LoginPage(driver);
     }
 
     public String getCurrentUrl() {
@@ -66,24 +123,24 @@ public DeleteAccountPage clickDeleteButton(){
 
     public ContactUsPage clickContactUs(){
         click(contactUsNavBarButton);
-        return new ContactUsPage();
+        return new ContactUsPage(driver);
 
     }
 
     public void setEmailAtSubscriptionSection(String email){
-        scrollToElementJS(subscribeButtonFooter);
+        scrollToElementJS(driver,subscribeButtonFooter);
         set(subscriptionFieldFooter,email);
         click(subscribeButtonFooter);
 
     }
     public String  messageDisplayed(){
-        return find(succesfullSubscribtionMessage).getText();
+        return succesfullSubscribtionMessage.getText();
     }
 
     public  ProductsPage clickViewBlueTopProduct(){
-        scrollToElementJS(viewBlueTopButton);
+        scrollToElementJS(driver,viewBlueTopButton);
         click(viewBlueTopButton);
-        return new ProductsPage();
+        return new ProductsPage(driver);
     }
 
 

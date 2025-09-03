@@ -1,8 +1,8 @@
 package base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,40 +10,37 @@ import java.time.Duration;
 import java.util.List;
 
 public class BasePage {
-    public static WebDriver driver;
-
-    public void setDriver(WebDriver driver){
-        BasePage.driver=driver;
-    }
-    public List<WebElement> findAll(By locator) {
-        return driver.findElements(locator);
-    }
+    protected WebDriver driver;
 
 
-    protected WebElement find(By locator){
-        return driver.findElement(locator);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+
+    }
+    protected void set(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
     }
 
-    protected void set(By locator, String text){
-        find(locator).clear();
-        find(locator).sendKeys(text);
+    protected void click(WebElement element) {
+        element.click();
     }
-    protected void click(By locator){
-        find(locator).click();
-    }
-    protected  void delay(int milliseconds){
-        try{
+
+    protected void delay(int milliseconds) {
+        try {
             Thread.sleep(milliseconds);
-        }
-        catch (InterruptedException exc){
+        } catch (InterruptedException exc) {
             exc.printStackTrace();
         }
     }
-    protected WebElement waitUntilVisible(By locator, int timeoutSeconds) {
+
+    protected WebElement waitUntilVisible(WebElement element, int timeoutSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
+    protected List<WebElement> waitUntilAllVisible(List<WebElement> elements, int timeoutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
 }
-
