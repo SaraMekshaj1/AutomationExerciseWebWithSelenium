@@ -272,8 +272,7 @@
 13. Enter payment details: Name on Card, Card Number, CVC, Expiration date
 14. Click 'Pay and Confirm Order' button
 15. Verify success message 'Your order has been placed successfully!'
-16. Click 'Delete Account' button
-17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+
 
 ## Test17:  Remove Products From Cart
 1. Launch browser
