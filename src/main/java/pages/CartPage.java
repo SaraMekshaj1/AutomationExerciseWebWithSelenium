@@ -47,9 +47,15 @@ public class CartPage extends BasePage {
     @FindBy(css = "#checkoutModal a[href='/login']")
     private WebElement registerLoginButtonOnCheckoutModal;
 
-    // ✅ Methods
+    @FindBy(css="ol.breadcrumb > li.active")
+    private WebElement shoppingCartText;
+
+
     public boolean isBlueTopShownInCart() {
         return blueTopProductIsVisibleAtCart.isDisplayed();
+    }
+    public boolean isShoppingCartTextVisible(){
+        return shoppingCartText.isDisplayed();
     }
 
     public String getQuantity() {
@@ -82,8 +88,10 @@ public class CartPage extends BasePage {
         return proceedToCheckOutButton.isDisplayed();
     }
 
-    public void clickProceedToCheckoutButton() {
+    public CheckoutPage clickProceedToCheckoutButton() {
         click(proceedToCheckOutButton);
+        return new CheckoutPage(driver);
+
     }
 
     public Signup_LoginPage clickRegisterLoginAtCheckoutButton() {

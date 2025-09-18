@@ -9,13 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.internal.TestResult;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,9 +21,8 @@ import java.io.IOException;
 public class BaseTest {
     protected  WebDriver driver;
     protected BasePage basePage;
-    private String url="https://automationexercise.com/";
+    private String URL="https://automationexercise.com/";
     protected HomePage homePage;
-    protected DesiredCapabilities dc=new DesiredCapabilities();
 
     @BeforeClass
     public void setUp(){
@@ -35,11 +32,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void loadApplication(){
-        driver.get(url);
+        driver.get(URL);
         basePage=new BasePage(driver);
-       homePage=new HomePage(driver);
-
-
+        homePage=new HomePage(driver);
     }
 
     @AfterMethod
@@ -59,8 +54,6 @@ public class BaseTest {
             System.out.println("Screenshot Located at "+destination);
         }
     }
-
-
     @AfterClass
     public void tearDown(){
 

@@ -1,7 +1,6 @@
 package home;
 
 import base.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,10 +19,10 @@ public class HomePage extends BasePage {
     WebElement slider;
 
     @FindBy(xpath="//a[@href='/login']")
-   WebElement loginSigninHomeButton ;
+   WebElement loginSignInHomeButton ;
 
-    @FindBy(xpath="//a[contains(., 'Logged in as') and .//b]")
-    WebElement logedAsNAME;
+    @FindBy(xpath = "//li/a[contains(.,'Logged in as')]")
+    WebElement loggedAsNAME;
 
     @FindBy(xpath="//a[@href='/delete_account']")
     WebElement deleteAccountButton;
@@ -50,7 +49,7 @@ public class HomePage extends BasePage {
     WebElement subscribeButtonFooter;
 
     @FindBy(id="success-subscribe")
-    WebElement succesfullSubscribtionMessage;
+    WebElement successfulSubscriptionMessage;
 
     @FindBy(css="a[href='/product_details/1']")
     WebElement viewBlueTopButton;
@@ -93,12 +92,12 @@ public class HomePage extends BasePage {
         return slider.isDisplayed();
     }
     public Signup_LoginPage clickSignLoginPage() {
-        click(loginSigninHomeButton);
+        click(loginSignInHomeButton);
         return new Signup_LoginPage(driver);
     }
 
     public ProductsPage clickProductsPage(){
-        click(productsNavBarButton);;
+        click(productsNavBarButton);
         return new ProductsPage(driver);
     }
 
@@ -107,7 +106,7 @@ public DeleteAccountPage clickDeleteButton(){
         return new DeleteAccountPage(driver);
 }
     public String getLoginInAsText(){
-        return logedAsNAME.getText();
+        return loggedAsNAME.getText().trim();
     }
     public boolean isDeleteButtonVisible(){
         return deleteAccountButton.isDisplayed();
@@ -134,7 +133,7 @@ public DeleteAccountPage clickDeleteButton(){
 
     }
     public String  messageDisplayed(){
-        return succesfullSubscribtionMessage.getText();
+        return successfulSubscriptionMessage.getText();
     }
 
     public  ProductsPage clickViewBlueTopProduct(){
@@ -142,8 +141,4 @@ public DeleteAccountPage clickDeleteButton(){
         click(viewBlueTopButton);
         return new ProductsPage(driver);
     }
-
-
-
-
 }
